@@ -5,13 +5,13 @@ import { FORETAG } from "@/lib/foretag";
 export const Route = createFileRoute("/integritetspolicy")({
   head: () => ({
     meta: [
-      { title: "Integritetspolicy – RT Anderssons Måleri AB" },
+      { title: "Integritetspolicy – AIF Måleri AB" },
       {
         name: "description",
         content:
-          "Så behandlar RT Anderssons Måleri AB dina personuppgifter när du kontaktar oss eller begär offert.",
+          "Så behandlar AIF Måleri AB dina personuppgifter när du kontaktar oss eller begär offert.",
       },
-      { property: "og:title", content: "Integritetspolicy – RT Anderssons Måleri AB" },
+      { property: "og:title", content: "Integritetspolicy – AIF Måleri AB" },
       { property: "og:url", content: "/integritetspolicy" },
     ],
     links: [{ rel: "canonical", href: "/integritetspolicy" }],
@@ -74,7 +74,7 @@ function Integritetspolicy() {
 
       <Sektion titel="Varför vi behandlar uppgifterna">
         <p>
-          Vi använder uppgifterna för att svara på din fråga, boka hembesök och ta fram en offert.
+          Vi använder uppgifterna för att svara på din fråga och ta fram en offert.
           Rättslig grund är att det behövs för att vidta åtgärder på din begäran innan ett avtal
           ingås, och därefter för att fullgöra avtalet. Om du blir kund sparar vi även underlag som
           vi är skyldiga att bevara enligt bokföringslagen.

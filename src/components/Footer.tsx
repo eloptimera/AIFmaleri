@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { FORETAG } from "@/lib/foretag";
 import { PaintEdge } from "@/components/Paint";
+import logoLjus from "@/assets/logo-ljus.png";
 
 export function Footer() {
   return (
@@ -8,9 +9,17 @@ export function Footer() {
       <PaintEdge tone="tint" seed={71} />
       <div className="container-page grid gap-12 py-16 sm:grid-cols-2 lg:grid-cols-3">
         <div>
-          <p className="font-display text-lg">{FORETAG.namn}</p>
-          <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-            Måleri med omsorg om detaljerna, i {FORETAG.ort} med omnejd sedan 1991.
+          <img
+            src={logoLjus}
+            alt={FORETAG.namn}
+            width={413}
+            height={254}
+            loading="lazy"
+            className="h-20 w-auto"
+          />
+          <p className="mt-4 max-w-xs text-sm leading-relaxed text-muted-foreground">
+            Fönstermästare och målare för bostadsrättsföreningar och privatpersoner i hela
+            Stockholms län.
           </p>
         </div>
 
@@ -23,17 +32,22 @@ export function Footer() {
               </a>
             </li>
             <li>
-              <a href={`tel:${FORETAG.mobilLank}`} className="hover:text-foreground">
-                {FORETAG.mobil}
-              </a>
-            </li>
-            <li>
               <a href={`mailto:${FORETAG.epost}`} className="hover:text-foreground">
                 {FORETAG.epost}
               </a>
             </li>
             <li>{FORETAG.adress}</li>
             <li>Org.nr {FORETAG.orgnr}</li>
+            <li>
+              <a
+                href={FORETAG.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-foreground"
+              >
+                Instagram {FORETAG.instagramNamn}
+              </a>
+            </li>
           </ul>
         </div>
 
@@ -74,7 +88,7 @@ export function Footer() {
           <span>
             © {new Date().getFullYear()} {FORETAG.namn}
           </span>
-          <span>F-skatt · Ansvarsförsäkrad · {FORETAG.garantiAr} års garanti</span>
+          <span>Godkänd för F-skatt · Medlem i Måleriföretagen i Sverige</span>
         </div>
       </div>
     </footer>

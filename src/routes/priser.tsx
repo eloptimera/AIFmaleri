@@ -6,16 +6,16 @@ import { Reveal } from "@/components/Reveal";
 export const Route = createFileRoute("/priser")({
   head: () => ({
     meta: [
-      { title: "Priser & ROT-avdrag – RT Anderssons Måleri AB" },
+      { title: "Priser & ROT-avdrag – AIF Måleri AB" },
       {
         name: "description",
         content:
-          "Från-priser för målning i Sundsvall och en enkel ROT-kalkylator som visar din kostnad efter 30 % avdrag. Slutpriset sätts alltid efter kostnadsfritt hembesök.",
+          "Så sätter vi pris på fönsterrenovering, måleri och trapphus, samt en enkel ROT-kalkylator som visar din kostnad efter 30 % avdrag.",
       },
-      { property: "og:title", content: "Priser & ROT-avdrag – RT Anderssons Måleri AB" },
+      { property: "og:title", content: "Priser & ROT-avdrag – AIF Måleri AB" },
       {
         property: "og:description",
-        content: "Från-priser per tjänst och ROT-kalkylator för måleri i Sundsvall.",
+        content: "Så sätts priset på våra tjänster, och en ROT-kalkylator för privatpersoner.",
       },
       { property: "og:url", content: "/priser" },
     ],
@@ -24,13 +24,19 @@ export const Route = createFileRoute("/priser")({
   component: Priser,
 });
 
-const PRISER = [
-  { tjanst: "Invändig målning, vägg och tak", pris: "från 180 kr/kvm" },
-  { tjanst: "Tapetsering", pris: "från 220 kr/kvm" },
-  { tjanst: "Spackling & underarbete", pris: "från 140 kr/kvm" },
-  { tjanst: "Snickerimålning, dörr", pris: "från 1 200 kr/st" },
-  { tjanst: "Fasadmålning trähus", pris: "från 290 kr/kvm" },
-  { tjanst: "Löpande timpris", pris: "från 650 kr/tim" },
+const PRISFAKTORER = [
+  {
+    titel: "Omfattning",
+    text: "Antal fönster och dörrar, trapphusets storlek eller fasadens yta avgör hur mycket arbete som krävs.",
+  },
+  {
+    titel: "Ytans skick",
+    text: "Flagnande färg, fuktskador och slitet trä kräver mer förarbete än en yta som bara ska målas om.",
+  },
+  {
+    titel: "Åtkomst och material",
+    text: "Höjd, ställning och val av färg och material påverkar både tid och kostnad.",
+  },
 ];
 
 const nf = new Intl.NumberFormat("sv-SE", { maximumFractionDigits: 0 });
@@ -46,36 +52,26 @@ function Priser() {
         <Reveal>
           <p className="eyebrow">Priser</p>
           <Heading as="h1" className="mt-6 max-w-2xl text-4xl leading-[1.12] sm:text-5xl">
-            Alltid tydliga priser
+            Det här påverkar priset
           </Heading>
-          <p className="mt-6 text-lg font-medium text-foreground">
-            Alla priser är inklusive moms och före ROT-avdrag.
-          </p>
-          <p className="mt-4 max-w-xl text-base leading-relaxed text-muted-foreground">
-            Priserna nedan är platshållare och riktvärden inklusive material. Varje hem är olika,
-            där ytans skick, takhöjd och underarbete avgör.
+          <p className="mt-6 max-w-xl text-base leading-relaxed text-muted-foreground">
+            Varje objekt är olika, så vi ger inga riktpriser i förväg. Beskriv projektet, gärna med
+            bilder, så återkommer vi med en offert.
           </p>
         </Reveal>
       </section>
 
       <section className="container-page pb-20">
-        <Reveal>
-          <ul className="overflow-hidden rounded-sm border border-line">
-            {PRISER.map((p, i) => (
-              <li
-                key={p.tjanst}
-                className={`flex items-baseline justify-between gap-4 px-5 py-5 sm:px-6 ${
-                  i % 2 === 0 ? "bg-card" : "bg-background"
-                }`}
-              >
-                <span className="min-w-0 text-sm">{p.tjanst}</span>
-                <span className="shrink-0 font-display text-base whitespace-nowrap sm:text-lg">
-                  {p.pris}
-                </span>
-              </li>
-            ))}
-          </ul>
-        </Reveal>
+        <div className="grid gap-10 md:grid-cols-3">
+          {PRISFAKTORER.map((f, i) => (
+            <Reveal key={f.titel} delay={i * 100}>
+              <article className="border-t border-foreground/20 pt-6">
+                <h3 className="text-xl">{f.titel}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{f.text}</p>
+              </article>
+            </Reveal>
+          ))}
+        </div>
       </section>
 
       <PaintSection tone="tint" seed={43} className="py-20">
@@ -84,8 +80,8 @@ function Priser() {
             <p className="eyebrow">ROT-kalkylator</p>
             <h2 className="mt-4 text-3xl">Räkna ut din kostnad efter avdrag</h2>
             <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-              ROT-avdraget ger 30 % rabatt på arbetskostnaden, upp till 50 000 kr per person och år.
-              Vi drar av det direkt på fakturan – du behöver inte göra något själv.
+              ROT-avdraget ger privatpersoner 30 % avdrag på arbetskostnaden, upp till 50 000 kr per
+              person och år. Avdraget görs normalt direkt på fakturan.
             </p>
 
             <label htmlFor="arbetskostnad" className="mt-10 block text-sm font-medium">
@@ -145,7 +141,7 @@ function Priser() {
             to="/offert"
             className="btn-base btn-primary rounded-full px-10 py-5 text-lg shadow-lg shadow-black/10"
           >
-            Begär kostnadsfri offert
+            Begär offert
           </Link>
         </Reveal>
       </section>

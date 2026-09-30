@@ -8,16 +8,16 @@ import { supabase } from "@/integrations/supabase/client";
 export const Route = createFileRoute("/kontakt")({
   head: () => ({
     meta: [
-      { title: "Kontakt – RT Anderssons Måleri AB i Sundsvall" },
+      { title: "Kontakt – AIF Måleri AB i Stockholm" },
       {
         name: "description",
         content:
-          "Ring, mejla eller skicka ett meddelande till RT Anderssons Måleri AB i Sundsvall. Öppettider, adress och karta.",
+          "Ring, mejla eller skicka ett meddelande till AIF Måleri AB i Stockholm. Telefon, e-post, adress och öppettider.",
       },
-      { property: "og:title", content: "Kontakt – RT Anderssons Måleri AB" },
+      { property: "og:title", content: "Kontakt – AIF Måleri AB" },
       {
         property: "og:description",
-        content: "Telefon, e-post, adress och öppettider för måleriet i Sundsvall.",
+        content: "Telefon, e-post, adress och öppettider för AIF Måleri AB i Stockholm.",
       },
       { property: "og:url", content: "/kontakt" },
     ],
@@ -80,17 +80,6 @@ function Kontakt() {
               </dd>
             </div>
             <div>
-              <dt className="eyebrow">Mobil</dt>
-              <dd className="mt-2">
-                <a
-                  href={`tel:${FORETAG.mobilLank}`}
-                  className="font-display text-2xl hover:opacity-70"
-                >
-                  {FORETAG.mobil}
-                </a>
-              </dd>
-            </div>
-            <div>
               <dt className="eyebrow">E-post</dt>
               <dd className="mt-2">
                 <a href={`mailto:${FORETAG.epost}`} className="hover:opacity-70">
@@ -110,11 +99,28 @@ function Kontakt() {
                     {o.dag}: {o.tid}
                   </p>
                 ))}
+                <p className="pt-2 text-xs">
+                  Vi utför arbete på plats under vardagar, men du når oss via e-post eller
+                  offertförfrågan dygnet runt.
+                </p>
               </dd>
             </div>
             <div>
               <dt className="eyebrow">Organisationsnummer</dt>
               <dd className="mt-2 text-muted-foreground">{FORETAG.orgnr}</dd>
+            </div>
+            <div>
+              <dt className="eyebrow">Instagram</dt>
+              <dd className="mt-2">
+                <a
+                  href={FORETAG.instagram}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-brand"
+                >
+                  {FORETAG.instagramNamn}
+                </a>
+              </dd>
             </div>
           </dl>
         </Reveal>
@@ -124,7 +130,7 @@ function Kontakt() {
             <div className="rounded-sm border border-line bg-card p-8">
               <h2 className="text-2xl">Tack för ditt meddelande</h2>
               <p className="mt-4 text-sm text-muted-foreground">
-                Vi återkommer så snart vi kan, oftast samma arbetsdag.
+                Vi återkommer så snart vi kan.
               </p>
             </div>
           ) : (
@@ -177,8 +183,8 @@ function Kontakt() {
       <section className="container-page pb-20">
         <Reveal>
           <iframe
-            title="Karta över vårt verksamhetsområde i Sundsvall"
-            src="https://www.openstreetmap.org/export/embed.html?bbox=17.20%2C62.35%2C17.42%2C62.44&layer=mapnik"
+            title="Karta över Stockholm, där vi är verksamma"
+            src="https://www.openstreetmap.org/export/embed.html?bbox=17.80%2C59.26%2C18.30%2C59.41&layer=mapnik"
             loading="lazy"
             className="h-[380px] w-full rounded-sm border border-line"
           />

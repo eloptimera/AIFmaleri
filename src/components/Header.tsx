@@ -2,6 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { Phone } from "lucide-react";
 import { useState } from "react";
 import { FORETAG } from "@/lib/foretag";
+import logoMork from "@/assets/logo-mork.png";
 
 const VANSTER = [
   { to: "/", label: "Hem" },
@@ -42,13 +43,17 @@ export function Header() {
           {/* Logga i mitten */}
           <Link
             to="/"
-            className="flex flex-col items-start leading-none md:items-center"
+            aria-label={`${FORETAG.namn} – startsidan`}
+            className="flex items-center md:justify-center"
             onClick={() => setOppen(false)}
           >
-            <span className="font-display text-lg font-medium tracking-tight">RT Anderssons</span>
-            <span className="mt-1 text-[0.65rem] uppercase tracking-[0.18em] text-primary-foreground/70">
-              Måleri · {FORETAG.ort}
-            </span>
+            <img
+              src={logoMork}
+              alt={FORETAG.namn}
+              width={413}
+              height={254}
+              className="h-11 w-auto"
+            />
           </Link>
 
           {/* Höger */}
@@ -76,7 +81,7 @@ export function Header() {
             </a>
             <Link
               to="/offert"
-              className="rounded-full bg-primary-foreground px-5 py-2.5 text-sm whitespace-nowrap font-medium text-primary transition-opacity duration-300 hover:opacity-90"
+              className="rounded-full bg-brand px-5 py-2.5 text-sm whitespace-nowrap font-medium text-brand-foreground transition-opacity duration-300 hover:opacity-90"
             >
               Begär offert
             </Link>
@@ -127,7 +132,7 @@ export function Header() {
             <Link
               to="/offert"
               onClick={() => setOppen(false)}
-              className="mt-3 rounded-full bg-primary-foreground px-5 py-3 text-center text-sm font-medium text-primary"
+              className="mt-3 rounded-full bg-brand px-5 py-3 text-center text-sm font-medium text-brand-foreground"
             >
               Begär offert
             </Link>

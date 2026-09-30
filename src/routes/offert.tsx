@@ -8,16 +8,16 @@ import { supabase } from "@/integrations/supabase/client";
 export const Route = createFileRoute("/offert")({
   head: () => ({
     meta: [
-      { title: "Begär kostnadsfri offert – RT Anderssons Måleri AB" },
+      { title: "Begär offert – AIF Måleri AB" },
       {
         name: "description",
         content:
-          "Beskriv ditt måleriprojekt i Sundsvall så kommer vi ut på ett kostnadsfritt hembesök och lämnar en fast offert.",
+          "Beskriv ditt projekt, till exempel fönsterrenovering, dörrar, trapphus eller fasad i Stockholm, så återkommer AIF Måleri AB med en offert.",
       },
-      { property: "og:title", content: "Begär kostnadsfri offert – RT Anderssons Måleri" },
+      { property: "og:title", content: "Begär offert – AIF Måleri AB" },
       {
         property: "og:description",
-        content: "Kostnadsfritt hembesök och fast pris på ditt måleriprojekt.",
+        content: "Berätta om ditt projekt så återkommer vi med en offert.",
       },
       { property: "og:url", content: "/offert" },
     ],
@@ -27,11 +27,13 @@ export const Route = createFileRoute("/offert")({
 });
 
 const UPPDRAGSTYPER = [
-  "Invändig målning",
-  "Fasadmålning",
-  "Tapetsering",
-  "Spackling & underarbete",
-  "Snickerimålning",
+  "Fönsterrenovering",
+  "Dörrar",
+  "Trapphus",
+  "Fasad",
+  "Målning",
+  "Snickeri",
+  "Bredspackling",
   "Annat",
 ];
 
@@ -91,8 +93,8 @@ function Offert() {
           <p className="eyebrow">Tack!</p>
           <h1 className="mt-5 text-3xl">Din förfrågan är mottagen</h1>
           <p className="mt-5 text-sm leading-relaxed text-muted-foreground">
-            Vi hör av oss inom en till två arbetsdagar för att boka ett kostnadsfritt hembesök. Är
-            det brådskande går det bra att ringa {FORETAG.telefon}.
+            Vi går igenom ditt projekt och återkommer så snart vi kan. Är det brådskande går det bra
+            att ringa {FORETAG.telefon}.
           </p>
           <Link to="/" className="btn-base btn-outline mt-8">
             Tillbaka till startsidan
@@ -111,8 +113,8 @@ function Offert() {
             Berätta om ditt projekt
           </Heading>
           <p className="mt-6 max-w-xl text-base leading-relaxed text-muted-foreground">
-            Ju mer du berättar, desto bättre och mer pricksäker offert kan vi utfärda. Offerten är
-            kostnadsfri.
+            Ju mer du berättar, desto bättre underlag får vi för en offert. Bilder på fönster,
+            dörrar eller ytor hjälper oss mycket.
           </p>
         </Reveal>
       </section>
@@ -144,7 +146,7 @@ function Offert() {
               </div>
               <div>
                 <label htmlFor="adress" className="text-sm font-medium">
-                  Adress och ort
+                  Adress till objektet
                 </label>
                 <input id="adress" name="adress" required className="field mt-2" />
               </div>
@@ -203,7 +205,7 @@ function Offert() {
                 name="meddelande"
                 rows={5}
                 className="field mt-2"
-                placeholder="Antal rum, takhöjd, nuvarande skick, kulörönskemål …"
+                placeholder="Antal fönster eller dörrar, våningsplan, nuvarande skick, kulörönskemål …"
               />
             </div>
 

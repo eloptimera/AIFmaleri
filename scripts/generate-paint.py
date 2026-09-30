@@ -42,8 +42,8 @@ def oklch_to_srgb(L, C, h):
     return np.array([enc(v) for v in rgb])
 
 
-# Samma färg som --primary i src/styles.css
-PAINT = oklch_to_srgb(0.336, 0.048, 254)
+# Varumärkesfärg (loggans röda)
+PAINT = np.array([213, 58, 48]) / 255.0  # loggans röda, samma som --brand i src/styles.css
 
 
 def norm(a):
@@ -168,8 +168,8 @@ UNDER = [(34, 66, 0)]
 
 # Sektionsfärger (samma som --background och --tint i src/styles.css)
 TONES = {
-    "beige": oklch_to_srgb(0.968, 0.006, 85),
-    "tint": oklch_to_srgb(0.934, 0.014, 80),
+    "beige": oklch_to_srgb(0.955, 0.02, 82),
+    "tint": oklch_to_srgb(0.925, 0.03, 78),
 }
 
 
